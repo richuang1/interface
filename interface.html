@@ -16,41 +16,43 @@
     
 	</head>
     <body>
-    <p style = "font-family:abnormalsemibold,garamond,serif;font-size:32px;;"> Wabash Basin Hydrology - climate change scenario models </p>
+    <p style = "font-family:abnormalsemibold,garamond,serif;font-size:32px;;" class="headline"> Wabash Basin Hydrology - climate change scenario models </p>
+	<div class="flex">
 	
-	<div class="boxed">
-	<h4> Variable: </h4>
-	
+		<div class="boxed">
+		<h4> Variable: </h4>
+		
 
-	<input type="radio" name="variable" value="Precipitation"> Precipitation<br>
-	<input type="radio" name="variable" value="Evapotranspiration"> Evapotranspiration<br>
-	<input type="radio" name="variable" value="Soil water content"> Soil water content </br>
-	<input type="radio" name="variable" value="Groundwater Recharge"> Groundwater Recharge<br>
-	<input type="radio" name="variable" value="Baseflow"> Baseflow<br>
-	<input type="radio" name="variable" value="Streamflow"> Streamflow </br>
-	<input type="radio" name="variable" value="Water Yield"> Water Yield </br>
-	<h4> Time Period: </h4>
-	<input type="radio" name="Time Period" value="2020s"> 2020s<br>
-	<input type="radio" name="Time Period" value="2050s"> 2050s<br>
-	<input type="radio" name="Time Period" value="2080s"> 2080s </br>
-	<input type="radio" name="Time Period" value="Historical"> Historical<br>
-	<h4> Emissions Scenario: </h4>
-	<input type="radio" name="Emissions Scenario" value="Medium">Medium<br>
-	<input type="radio" name="Emissions Scenario" value="High">High<br>
-	<input type="radio" name="Emissions Scenario" value="Historical">Historical </br>
+		<input type="radio" name="variable" value="Precipitation"> Precipitation<br>
+		<input type="radio" name="variable" value="Evapotranspiration"> Evapotranspiration<br>
+		<input type="radio" name="variable" value="Soil water content"> Soil water content </br>
+		<input type="radio" name="variable" value="Groundwater Recharge"> Groundwater Recharge<br>
+		<input type="radio" name="variable" value="Baseflow"> Baseflow<br>
+		<input type="radio" name="variable" value="Streamflow"> Streamflow </br>
+		<input type="radio" name="variable" value="Water Yield"> Water Yield </br>
+		<h4> Time Period: </h4>
+		<input type="radio" name="Time Period" value="2020s"> 2020s<br>
+		<input type="radio" name="Time Period" value="2050s"> 2050s<br>
+		<input type="radio" name="Time Period" value="2080s"> 2080s </br>
+		<input type="radio" name="Time Period" value="Historical"> Historical<br>
+		<h4> Emissions Scenario: </h4>
+		<input type="radio" name="Emissions Scenario" value="Medium">Medium<br>
+		<input type="radio" name="Emissions Scenario" value="High">High<br>
+		<input type="radio" name="Emissions Scenario" value="Historical">Historical </br>
 
-	<h4> Summary Type: </h4>
-	<input type="radio" name="variable" value="Mean Annual Values"> Mean Annual Values<br>
-	<input type="radio" name="variable" value="Percent Change in Mean Annual"> Percent Change in Mean Annual<br>
-	<input type="radio" name="variable" value="Absolute Change in Mean Annual"> Absolute Change in Mean Annual </br>
-	</style>
+		<h4> Summary Type: </h4>
+		<input type="radio" name="variable" value="Mean Annual Values"> Mean Annual Values<br>
+		<input type="radio" name="variable" value="Percent Change in Mean Annual"> Percent Change in Mean Annual<br>
+		<input type="radio" name="variable" value="Absolute Change in Mean Annual"> Absolute Change in Mean Annual </br>
+		</style>
+		</div>
+		<div class = "flex">
+			<div id="mapid" style="width: 800px; height: 700px;"></div>
+		</div>
 	</div>
-	<div id="mapid" style="width: 800px; height: 700px;"></div>
-<div class = "map-align">
 <script>
 	
 	var mymap = L.map('mapid').setView([39.70, -86.81], 7);
-
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -58,25 +60,19 @@
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
-
     var wmsLayer = L.tileLayer.wms('http://gf8.ucs.indiana.edu/geoserver/PfecHydro/wms?', {
     layers: 'ETmm_2020_45',
     format: 'image/png',
     transparent: true
     }).addTo(mymap);
-
     var legend = L.control({position: 'bottomright'});
-
 legend.onAdd = function (map) {
-
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = '<img src="http://gf8.ucs.indiana.edu/geoserver/PfecHydro/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=ETmm_2020_45">';
     
     return div;
 };
-
 legend.addTo(mymap);
-
     function displaymap(ev) {
         mymap.removeLayer(wmsLayer);
         wmsLayer = L.tileLayer.wms('http://gf8.ucs.indiana.edu/geoserver/PfecHydro/wms?', {
@@ -85,8 +81,6 @@ legend.addTo(mymap);
     transparent: true
     }).addTo(mymap);
     }
-
 </script>
-</div>
     </body>
 </html>

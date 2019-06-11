@@ -1,10 +1,15 @@
-.boxed {
-  background-color:#DCDCDC;
-   width: 420px;
-  height: 590px;
-} 
-
-.map-align{
-	display: flex; 
-	justify-content: center;
+.headline {
+    text-align: left;
 }
+
+.flex {
+    display: flex;
+    justify-content: left;
+}
+
+.boxed {
+    background-color: #dcdcdc;
+    width: 420px;
+    padding: 15px 0 0 30px;
+}
+
