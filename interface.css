@@ -1,0 +1,10 @@
+.boxed {
+  background-color:#DCDCDC;
+   width: 420px;
+  height: 590px;
+} 
+
+.map-align{
+	display: flex; 
+	justify-content: center;
+}
